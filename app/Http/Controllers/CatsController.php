@@ -57,13 +57,16 @@ class CatsController extends Controller
     public function getRandomCats()
     {
         $f_contents = file('cats.txt');
-        $line1 = $f_contents[array_rand($f_contents)];
-        $line2 = $f_contents[array_rand($f_contents)];
-        $line3 = $f_contents[array_rand($f_contents)];
-        $Cat1 = $line1;
-        $Cat2 = $line2;
-        $Cat3 = $line3;
-
-        return compact('Cat1', 'Cat2', 'Cat3');
+        while(TRUE) {
+            $line1 = $f_contents[array_rand($f_contents)];
+            $line2 = $f_contents[array_rand($f_contents)];
+            $line3 = $f_contents[array_rand($f_contents)];
+            $Cat1 = $line1;
+            $Cat2 = $line2;
+            $Cat3 = $line3;
+            if ($Cat1 != $Cat2 && $Cat1 != $Cat3 && $Cat2 != $Cat3){
+                return compact('Cat1', 'Cat2', 'Cat3');
+            }
+        }
     }
 }
