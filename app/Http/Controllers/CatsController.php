@@ -21,15 +21,7 @@ class CatsController extends Controller
             $count->save();
 
             $findNcount = ViewCount::where('page_id', '=', $value)->count();
-            $findAllcount = ViewCount::all();
-
-            $CountAll = 0;
-
-            foreach ($findAllcount as $all) {
-                $CountAll = $CountAll + $all->page_count;
-            }
-
-            $N = $value;
+            $findAllcount = ViewCount::all()->count();
 
             $Cache = Cache::remember($value, 60,
                 function () use ($value) {
@@ -43,14 +35,14 @@ class CatsController extends Controller
 
             $datetime = date("y-M-d H:m:s");
 
-            $data = json_encode(['datetime' => $datetime, 'N' => $N, 'Cats' => $cats, 'CountN' => $findNcount, 'CountAll' => $CountAll]);
+            $data = json_encode(['datetime' => $datetime, 'N' => $value, 'Cats' => $cats, 'CountN' => $findNcount, 'CountAll' => $findAllcount]);
 
             JsonLoggingService::log('log.json', $data);
 
-            return view('randomcats', compact('N', 'findNcount', 'CountAll'))->with('Cache', $Cache);
+            return view('randomcats', compact('value', 'findNcount', 'findAllcount'))->with('Cache', $Cache);
         }
         else {
-            return redirect('/');
+            return redirect('/')->with('errormsg', 'Type number 1 - 1000000');
         }
     }
 

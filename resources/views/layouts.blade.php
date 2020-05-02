@@ -2,13 +2,34 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>Sender.lt atranka</title>
+    <title>UAB SENDER.LT</title>
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+    <style>
+        .card:hover {
+            -webkit-box-shadow: 0px 0px 25px -10px rgba(0,0,0,0.75);
+            -moz-box-shadow: 0px 0px 25px -10px rgba(0,0,0,0.75);
+            box-shadow: 0px 0px 25px -10px rgba(0,0,0,0.75);
+        }
+    </style>
 </head>
 <body>
     <div class="container">
         <div class="row mt-5">
-            @yield('content')
+            <div class="col-md-12">
+                <div class="mb-5">
+                    <center>
+                        <h4>
+                            UAB SENDER.LT JUNIOR PHP DEVELOPER
+                        </h4>
+                    </center>
+                </div>
+                <div class="card">
+                    <div class="card-body">
+                        @yield('content')
+                    </div>
+                </div>
+                <small>@ <b>Edvinas Valentinovicius</b></small>
+            </div>
         </div>
     </div>
     <script src="https://code.jquery.com/jquery-3.4.1.slim.min.js" integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n" crossorigin="anonymous"></script>
